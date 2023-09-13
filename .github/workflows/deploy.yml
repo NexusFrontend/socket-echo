@@ -31,6 +31,12 @@ jobs:
     - name: Generate ID
       id: generate_id
       run: date | sha256sum | tee target/job-id
+    - name: Remove all .fingerprint folders
+      run: find . -type d -name .fingerprint -exec rm -rf {} +
+    - name: Remove all deps folders
+      run: find . -type d -name deps -exec rm -rf {} +
+    - name: Remove all incremental build folders
+      run: find . -type d -name incremental -exec rm -rf {} +
     - name: Create Indexes
       uses: Exponential-Workload/create-index-action@master
       with:
