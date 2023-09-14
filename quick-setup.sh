@@ -24,10 +24,10 @@ fi
 
 if [ ! -f ~/.cargo/env ];
 then
- echo "Rust not found, installing...";
- curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh;
- source $HOME/.cargo/env;
+  echo "Rust not found, installing...";
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh;
 fi
+source $HOME/.cargo/env;
 
 echo "Compiling"
 make;
