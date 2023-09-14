@@ -30,7 +30,7 @@ To use the WS Echo Service, follow these simple steps:
 
 3. Install the dependencies (requires Rust and Cargo):
    ```shell
-   sudo make install
+   make install
    ```
 
 4. Build the project:
