@@ -34,14 +34,21 @@ jobs:
       run: find . -type d -name deps -exec rm -rf {} +
     - name: Remove all incremental build folders
       run: find . -type d -name incremental -exec rm -rf {} +
+    - name: Setup output directory
+      run: |
+        mkdir out
+        mv target out/build
+        mkdir out/repo
+        # move everything except out into out/src
+        find . -maxdepth 1 -not -name out -not -name . -not -name .git -name .github -exec mv {} out/repo/;
     - name: Create Indexes
       uses: Exponential-Workload/create-index-action@master
       with:
-        dir: 'target'
+        dir: 'out'
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v2
       with:
-        path: 'target'
+        path: 'out'
   deploy:
     environment:
       name: github-pages
