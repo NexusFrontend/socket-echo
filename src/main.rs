@@ -9,7 +9,7 @@ use tokio_tungstenite::WebSocketStream;
 
 #[tokio::main]
 async fn main() {
-    let addr = "127.0.0.1:3847".parse::<SocketAddr>().unwrap();
+    let addr = "0.0.0.0:3847".parse::<SocketAddr>().unwrap();
     let listener = TcpListener::bind(&addr).await.unwrap();
     println!("WebSocket server is running on ws://{}", addr);
 
