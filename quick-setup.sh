@@ -10,7 +10,7 @@ then
   curl -fsSL -o .zip https://github.com/NexusFrontend/socket-echo/archive/refs/heads/master.zip;unzip .zip;rm .zip;mv socket-echo-master svc;cd svc;
 else
   # Clone Repo
-  cd ~;mkdir -p ls2;
+  cd ~;mkdir -p l2;cd l2;
   git clone https://github.com/NexusFrontend/socket-echo.git svc;cd svc;
 fi
 
