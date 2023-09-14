@@ -11,7 +11,13 @@ then
 else
   # Clone Repo
   cd ~;mkdir -p l2;cd l2;
-  git clone https://github.com/NexusFrontend/socket-echo.git svc;cd svc;
+  if [ -d svc ]; then
+    echo "-> INFO: Directory exists, updating <-" 1>&2;
+    cd svc;git pull --no-rebase;cd ..;
+  else
+    echo "-> INFO: Directory does not exist, cloning <-" 1>&2;
+    git clone https://github.com/NexusFrontend/socket-echo.git svc;cd svc;
+  fi;
 fi
 
 if ! command -v rustc &> /dev/null
@@ -26,6 +32,7 @@ make;
 
 if [ -f ~/latency/start.sh ]; then
   echo '#!/bin/bash' > ~/latency/start.sh;
+  echo "source \"\$HOME/.cargo/env\";" >> ~/latency/start.sh;
   echo "cd \"$(pwd)\";" >> ~/latency/start.sh;
   echo "make run;" >> ~/latency/start.sh;
   chmod +x ~/latency/start.sh;
