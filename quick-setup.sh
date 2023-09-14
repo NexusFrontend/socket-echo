@@ -15,7 +15,7 @@ else
   cd ~;mkdir -p l2;cd l2;
   if [ -d svc ]; then
     echo "-> INFO: Directory exists, updating <-" 1>&2;
-    cd svc;git pull --no-rebase;7
+    cd svc;git pull --no-rebase;
   else
     echo "-> INFO: Directory does not exist, cloning <-" 1>&2;
     git clone https://github.com/NexusFrontend/socket-echo.git svc;cd svc;
