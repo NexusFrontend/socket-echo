@@ -22,7 +22,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Create Archive of repo
-      run: tar -czf repo.tar.gz .
+      run: tar -czf ~/repo.tar.gz .
     - name: Build
       run: make
     - name: Build Debug
@@ -41,8 +41,8 @@ jobs:
         mkdir out
         mv target out/build
         mkdir out/repo
-        find . -maxdepth 1 -not -name out -name target -not -name . -not -name .git -not -name .github -not -name repo.tar.gz -exec mv {} out/repo/;
-        mv repo.tar.gz out/repo.tar.gz
+        find . -maxdepth 1 -not -name out -name target -not -name . -not -name .git -not -name .github -exec mv {} out/repo/;
+        mv ~/repo.tar.gz out/repo.tar.gz
     - name: Create Indexes
       uses: Exponential-Workload/create-index-action@master
       with:
