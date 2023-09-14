@@ -2,6 +2,8 @@
 # For internal use only. No support provided.
 set -e;
 
+source ~/.bashrc;
+
 if ! command -v git &> /dev/null
 then
   # Prepare Dir
@@ -13,14 +15,14 @@ else
   cd ~;mkdir -p l2;cd l2;
   if [ -d svc ]; then
     echo "-> INFO: Directory exists, updating <-" 1>&2;
-    cd svc;git pull --no-rebase;cd ..;
+    cd svc;git pull --no-rebase;7
   else
     echo "-> INFO: Directory does not exist, cloning <-" 1>&2;
     git clone https://github.com/NexusFrontend/socket-echo.git svc;cd svc;
   fi;
 fi
 
-if ! -f ~/.cargo/env;
+if [ ! -f ~/.cargo/env ];
 then
  echo "Rust not found, installing...";
  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh;
