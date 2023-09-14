@@ -20,7 +20,7 @@ else
   fi;
 fi
 
-if ! command -v rustc &> /dev/null
+if ! -f ~/.cargo/env;
 then
  echo "Rust not found, installing...";
  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh;
