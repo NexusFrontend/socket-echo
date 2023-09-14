@@ -40,4 +40,19 @@ if [ -f ~/latency/start.sh ]; then
   chmod +x ~/latency/start.sh;
 fi;
 
+echo "Creating User Systemd Service"
+
+mkdir -p ~/.config/systemd/user;
+echo "[Unit]" > ~/.config/systemd/user/latency.service;
+echo "Description=Echo Service" >> ~/.config/systemd/user/latency.service;
+echo "After=network.target" >> ~/.config/systemd/user/latency.service;
+echo "" >> ~/.config/systemd/user/latency.service;
+echo "[Service]" >> ~/.config/systemd/user/latency.service;
+echo "Type=simple" >> ~/.config/systemd/user/latency.service;
+echo "Restart=always" >> ~/.config/systemd/user/latency.service;
+echo "ExecStart=$HOME/latency/start.sh" >> ~/.config/systemd/user/latency.service;
+echo "" >> ~/.config/systemd/user/latency.service;
+echo "[Install]" >> ~/.config/systemd/user/latency.service;
+echo "WantedBy=default.target" >> ~/.config/systemd/user/latency.service;
+
 echo "Done!"
